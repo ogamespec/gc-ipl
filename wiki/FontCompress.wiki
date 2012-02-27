@@ -122,3 +122,5 @@ void Decode(void *s, void *d)
 }}}
 
 Notes : I found that some files on gamecube DVDs which have "SZP" extension are also compressed as "Yay0", so probably Nintendo's term for this compression algo is 'SZP'-compression.
+
+Dolphin SDK contain OSFont API to load font and convert it to texture for graphics output.
