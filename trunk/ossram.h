@@ -11,3 +11,8 @@ typedef struct OSSram
     u8      flags;
     u8      dummy[44];
 } OSSram;
+
+OSSram * __OSLockSram (void);
+BOOL __OSCheckSram (void);
+void __OSUnlockSram (BOOL writeBack);
+BOOL __OSSyncSram (void);
