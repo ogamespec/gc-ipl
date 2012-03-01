@@ -10,8 +10,14 @@
 #   - Jump to IPL's __start.
 
 .text
-.org 0              # Will be actually 0xFFF0_0100 later.
+.org 0              
 
+.byte "(C) 1999-2001 Nintendo.  All rights reserved."
+.byte "(C) 1999 ArtX Inc.  All rights reserved."
+.byte "PAL  Revision 1.0 "
+.align 256
+
+# Will be actually 0xFFF0_0100 as reset vector.
 boot:
 
 # This will initialize Gekko implementation specifics.
