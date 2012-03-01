@@ -1,0 +1,14 @@
+8130B84C  7C0802A6  mflr        r0
+8130B850  90010004  stw         r0, 4 (r1)
+8130B854  9421FFF8  stwu        r1, -8 (r1)
+8130B858  48054EE5  bl          __OSLockSram 
+8130B85C  88830012  lbz         r4, 18 (r3)
+8130B860  38600000  li          r3, 0
+8130B864  38040004  addi        r0, r4, 4
+8130B868  B00D83F0  sth         r0, -0x7C10 (r13)
+8130B86C  48055291  bl          __OSUnlockSram 
+8130B870  4BFFFCA9  bl          0x8130B518 
+8130B874  8001000C  lwz         r0, 12 (r1)
+8130B878  38210008  addi        r1, r1, 8
+8130B87C  7C0803A6  mtlr        r0
+8130B880  4E800020  blr

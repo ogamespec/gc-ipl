@@ -1,0 +1,16 @@
+81307EB8  7C0802A6  mflr        r0
+81307EBC  90010004  stw         r0, 4 (r1)
+81307EC0  9421FFF8  stwu        r1, -8 (r1)
+81307EC4  4805B8B9  bl          OSGetTick 
+81307EC8  906D8390  stw         r3, -0x7C70 (r13)
+81307ECC  4805B8B1  bl          OSGetTick 
+81307ED0  906D8394  stw         r3, -0x7C6C (r13)
+81307ED4  4805B8A9  bl          OSGetTick 
+81307ED8  906D8398  stw         r3, -0x7C68 (r13)
+81307EDC  4805B8A1  bl          OSGetTick 
+81307EE0  906D839C  stw         r3, -0x7C64 (r13)
+81307EE4  48000015  bl          0x81307EF8 
+81307EE8  8001000C  lwz         r0, 12 (r1)
+81307EEC  38210008  addi        r1, r1, 8
+81307EF0  7C0803A6  mtlr        r0
+81307EF4  4E800020  blr

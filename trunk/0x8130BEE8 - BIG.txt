@@ -1,0 +1,66 @@
+8130BEE8  7C0802A6  mflr        r0
+8130BEEC  90010004  stw         r0, 4 (r1)
+8130BEF0  9421FFE8  stwu        r1, -24 (r1)
+8130BEF4  93E10014  stw         r31, 20 (r1)
+8130BEF8  93C10010  stw         r30, 16 (r1)
+8130BEFC  7C7E1B78  or          r30, r3, r3
+8130BF00  4BFF51F9  bl          0x813010F8 
+8130BF04  7C7F1B78  or          r31, r3, r3
+8130BF08  4BFF61C1  bl          0x813020C8 
+8130BF0C  4BFF61AD  bl          0x813020B8 
+8130BF10  2C030000  cmpwi       r3, 0
+8130BF14  41820010  beq-        0x8130BF24 
+8130BF18  38000002  li          r0, 2
+8130BF1C  900D83F8  stw         r0, -0x7C08 (r13)
+8130BF20  48000048  b           0x8130BF68 
+8130BF24  4BFF619D  bl          0x813020C0 
+8130BF28  2C030000  cmpwi       r3, 0
+8130BF2C  41820010  beq-        0x8130BF3C 
+8130BF30  38000000  li          r0, 0
+8130BF34  900D83F8  stw         r0, -0x7C08 (r13)
+8130BF38  48000030  b           0x8130BF68 
+8130BF3C  4BFF61B1  bl          0x813020EC 
+8130BF40  2C030013  cmpwi       r3, 19
+8130BF44  41820010  beq-        0x8130BF54 
+8130BF48  4BFF6741  bl          0x81302688 
+8130BF4C  2C030000  cmpwi       r3, 0
+8130BF50  41820010  beq-        0x8130BF60 
+8130BF54  38000003  li          r0, 3
+8130BF58  900D83F8  stw         r0, -0x7C08 (r13)
+8130BF5C  4800000C  b           0x8130BF68 
+8130BF60  38000001  li          r0, 1
+8130BF64  900D83F8  stw         r0, -0x7C08 (r13)
+8130BF68  806D83F8  lwz         r3, -0x7C08 (r13)
+8130BF6C  2C1E0000  cmpwi       r30, 0
+8130BF70  38000001  li          r0, 1
+8130BF74  906D83FC  stw         r3, -0x7C04 (r13)
+8130BF78  981F001E  stb         r0, 30 (r31)
+8130BF7C  41820018  beq-        0x8130BF94 
+8130BF80  3C60814B  lis         r3, 0x814B
+8130BF84  3803F878  subi        r0, r3, 0x0788
+8130BF88  900D8400  stw         r0, -0x7C00 (r13)
+8130BF8C  806D8400  lwz         r3, -0x7C00 (r13)
+8130BF90  48000061  bl          0x8130BFF0 
+8130BF94  806D8400  lwz         r3, -0x7C00 (r13)
+8130BF98  48000199  bl          0x8130C130 
+8130BF9C  2C1E0000  cmpwi       r30, 0
+8130BFA0  41820008  beq-        0x8130BFA8 
+8130BFA4  4800163D  bl          0x8130D5E0 
+8130BFA8  7FC3F378  or          r3, r30, r30
+8130BFAC  480032E1  bl          0x8130F28C 
+8130BFB0  7FC3F378  or          r3, r30, r30
+8130BFB4  48005361  bl          0x81311314 
+8130BFB8  7FC3F378  or          r3, r30, r30
+8130BFBC  48009769  bl          0x81315724 
+8130BFC0  7FC3F378  or          r3, r30, r30
+8130BFC4  480097F5  bl          0x813157B8 
+8130BFC8  7FC3F378  or          r3, r30, r30
+8130BFCC  48015765  bl          0x81321730 
+8130BFD0  7FC3F378  or          r3, r30, r30
+8130BFD4  4801581D  bl          0x813217F0 
+8130BFD8  8001001C  lwz         r0, 28 (r1)
+8130BFDC  83E10014  lwz         r31, 20 (r1)
+8130BFE0  83C10010  lwz         r30, 16 (r1)
+8130BFE4  38210018  addi        r1, r1, 24
+8130BFE8  7C0803A6  mtlr        r0
+8130BFEC  4E800020  blr

@@ -1,0 +1,48 @@
+8130BDB8  7C0802A6  mflr        r0
+8130BDBC  90010004  stw         r0, 4 (r1)
+8130BDC0  9421FFF8  stwu        r1, -8 (r1)
+8130BDC4  800D83FC  lwz         r0, -0x7C04 (r13)
+8130BDC8  900D83F8  stw         r0, -0x7C08 (r13)
+8130BDCC  800D83F8  lwz         r0, -0x7C08 (r13)
+8130BDD0  28000006  cmplwi      r0, 6
+8130BDD4  41810094  bgt-        0x8130BE68 
+8130BDD8  3C608138  lis         r3, 0x8138
+8130BDDC  386310E8  addi        r3, r3, 0x10E8
+8130BDE0  5400103A  rlwinm      r0, r0, 2, 0, 29            mask:0xFFFFFFFC
+8130BDE4  7C03002E  lwzx        r0, r3, r0
+8130BDE8  7C0903A6  mtctr       r0
+8130BDEC  4E800420  bctr         
+8130BDF0  48001379  bl          0x8130D168 
+8130BDF4  906D83FC  stw         r3, -0x7C04 (r13)
+8130BDF8  48000B15  bl          0x8130C90C 
+8130BDFC  4800006C  b           0x8130BE68 
+8130BE00  48001051  bl          0x8130CE50 
+8130BE04  906D83FC  stw         r3, -0x7C04 (r13)
+8130BE08  48000B05  bl          0x8130C90C 
+8130BE0C  4800005C  b           0x8130BE68 
+8130BE10  48000D65  bl          0x8130CB74 
+8130BE14  906D83FC  stw         r3, -0x7C04 (r13)
+8130BE18  48000AF5  bl          0x8130C90C 
+8130BE1C  4800004C  b           0x8130BE68 
+8130BE20  480016C1  bl          0x8130D4E0 
+8130BE24  906D83FC  stw         r3, -0x7C04 (r13)
+8130BE28  48000AE5  bl          0x8130C90C 
+8130BE2C  4800003C  b           0x8130BE68 
+8130BE30  48002F01  bl          0x8130ED30 
+8130BE34  38000001  li          r0, 1
+8130BE38  906D83FC  stw         r3, -0x7C04 (r13)
+8130BE3C  900D8030  stw         r0, -0x7FD0 (r13)
+8130BE40  48000028  b           0x8130BE68 
+8130BE44  800D8030  lwz         r0, -0x7FD0 (r13)
+8130BE48  2C000000  cmpwi       r0, 0
+8130BE4C  41820014  beq-        0x8130BE60 
+8130BE50  38600000  li          r3, 0
+8130BE54  4804EDCD  bl          0x8135AC20 
+8130BE58  38000000  li          r0, 0
+8130BE5C  900D8030  stw         r0, -0x7FD0 (r13)
+8130BE60  48006D3D  bl          0x81312B9C 
+8130BE64  906D83FC  stw         r3, -0x7C04 (r13)
+8130BE68  8001000C  lwz         r0, 12 (r1)
+8130BE6C  38210008  addi        r1, r1, 8
+8130BE70  7C0803A6  mtlr        r0
+8130BE74  4E800020  blr

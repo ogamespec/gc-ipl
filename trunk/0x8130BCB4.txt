@@ -1,0 +1,59 @@
+8130BCB4  7C0802A6  mflr        r0
+8130BCB8  3C608138  lis         r3, 0x8138
+8130BCBC  90010004  stw         r0, 4 (r1)
+8130BCC0  38031820  addi        r0, r3, 0x1820
+8130BCC4  9421FFD8  stwu        r1, -40 (r1)
+8130BCC8  BF610014  stmw        r27, 20 (r1)
+8130BCCC  3BE00000  li          r31, 0
+8130BCD0  900D83C8  stw         r0, -0x7C38 (r13)
+8130BCD4  83AD83C8  lwz         r29, -0x7C38 (r13)
+8130BCD8  83DD0000  lwz         r30, 0 (r29)
+8130BCDC  480000A8  b           0x8130BD84 
+8130BCE0  806D83C8  lwz         r3, -0x7C38 (r13)
+8130BCE4  801D0004  lwz         r0, 4 (r29)
+8130BCE8  7CA30214  add         r5, r3, r0
+8130BCEC  88050000  lbz         r0, 0 (r5)
+8130BCF0  28000059  cmplwi      r0, 89
+8130BCF4  40820040  bne-        0x8130BD34 
+8130BCF8  88050001  lbz         r0, 1 (r5)
+8130BCFC  28000061  cmplwi      r0, 97
+8130BD00  40820034  bne-        0x8130BD34 
+8130BD04  88050002  lbz         r0, 2 (r5)
+8130BD08  28000079  cmplwi      r0, 121
+8130BD0C  40820028  bne-        0x8130BD34 
+8130BD10  88050005  lbz         r0, 5 (r5)
+8130BD14  88650004  lbz         r3, 4 (r5)
+8130BD18  88850006  lbz         r4, 6 (r5)
+8130BD1C  5400801E  rlwinm      r0, r0, 16, 0, 15           mask:0xFFFF0000
+8130BD20  5060C00E  rlwimi      r0, r3, 24, 0, 7            mask:0xFF000000
+8130BD24  88A50007  lbz         r5, 7 (r5)
+8130BD28  5080442E  rlwimi      r0, r4, 8, 16, 23           mask:0x0000FF00
+8130BD2C  7CBB0378  or          r27, r5, r0
+8130BD30  48000008  b           0x8130BD38 
+8130BD34  3B600000  li          r27, 0
+8130BD38  2C1B0000  cmpwi       r27, 0
+8130BD3C  41820040  beq-        0x8130BD7C 
+8130BD40  381B001F  addi        r0, r27, 31
+8130BD44  54030034  rlwinm      r3, r0, 0, 0, 26            mask:0xFFFFFFE0
+8130BD48  4BFFC0F9  bl          0x81307E40 
+8130BD4C  80AD83C8  lwz         r5, -0x7C38 (r13)
+8130BD50  3B830000  addi        r28, r3, 0
+8130BD54  801D0004  lwz         r0, 4 (r29)
+8130BD58  389C0000  addi        r4, r28, 0
+8130BD5C  7C650214  add         r3, r5, r0
+8130BD60  4BFFFD89  bl          0x8130BAE8 
+8130BD64  800D83C8  lwz         r0, -0x7C38 (r13)
+8130BD68  387C0000  addi        r3, r28, 0
+8130BD6C  389B0000  addi        r4, r27, 0
+8130BD70  7C00E050  subf        r0, r0, r28
+8130BD74  901D0004  stw         r0, 4 (r29)
+8130BD78  48050F39  bl          DCStoreRange 
+8130BD7C  3BBD0004  addi        r29, r29, 4
+8130BD80  3BFF0001  addi        r31, r31, 1
+8130BD84  7C1FF000  cmpw        r31, r30
+8130BD88  4180FF58  blt+        0x8130BCE0 
+8130BD8C  BB610014  lmw         r27, 20 (r1)
+8130BD90  8001002C  lwz         r0, 44 (r1)
+8130BD94  38210028  addi        r1, r1, 40
+8130BD98  7C0803A6  mtlr        r0
+8130BD9C  4E800020  blr
