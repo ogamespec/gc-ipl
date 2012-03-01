@@ -1,0 +1,24 @@
+813015A4  7C0802A6  mflr        r0
+813015A8  90010004  stw         r0, 4 (r1)
+813015AC  9421FFF8  stwu        r1, -8 (r1)
+813015B0  808D82FC  lwz         r4, -0x7D04 (r13)
+813015B4  88040019  lbz         r0, 25 (r4)
+813015B8  28000000  cmplwi      r0, 0
+813015BC  41820038  beq-        0x813015F4 
+813015C0  A0040008  lhz         r0, 8 (r4)
+813015C4  280001B8  cmplwi      r0, 0x01B8
+813015C8  4180002C  blt-        0x813015F4 
+813015CC  A0C40006  lhz         r6, 6 (r4)
+813015D0  38600000  li          r3, 0
+813015D4  A0A40004  lhz         r5, 4 (r4)
+813015D8  3886FFFC  subi        r4, r6, 4
+813015DC  48078B3D  bl          GXSetScissor 
+813015E0  808D82FC  lwz         r4, -0x7D04 (r13)
+813015E4  38600000  li          r3, 0
+813015E8  A0840006  lhz         r4, 6 (r4)
+813015EC  3884FFFC  subi        r4, r4, 4
+813015F0  48078BD9  bl          GXSetScissorBoxOffset 
+813015F4  8001000C  lwz         r0, 12 (r1)
+813015F8  38210008  addi        r1, r1, 8
+813015FC  7C0803A6  mtlr        r0
+81301600  4E800020  blr

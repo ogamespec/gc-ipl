@@ -1,0 +1,79 @@
+81301468  7C0802A6  mflr        r0
+8130146C  90010004  stw         r0, 4 (r1)
+81301470  9421FFE0  stwu        r1, -32 (r1)
+81301474  93E1001C  stw         r31, 28 (r1)
+81301478  480622ED  bl          OSGetTime 
+8130147C  908D830C  stw         r4, -0x7CF4 (r13)
+81301480  80AD82FC  lwz         r5, -0x7D04 (r13)
+81301484  906D8308  stw         r3, -0x7CF8 (r13)
+81301488  88050018  lbz         r0, 24 (r5)
+8130148C  28000000  cmplwi      r0, 0
+81301490  4182006C  beq-        0x813014FC 
+81301494  3C608138  lis         r3, 0x8138
+81301498  4CC63182  crclr       6
+8130149C  38A31030  addi        r5, r3, 0x1030
+813014A0  386D800C  subi        r3, r13, 0x7FF4
+813014A4  388000C6  li          r4, 198
+813014A8  4805C4FD  bl          OSPanic 
+813014AC  83ED82FC  lwz         r31, -0x7D04 (r13)
+813014B0  48068F55  bl          0x8136A404 
+813014B4  A0BF0004  lhz         r5, 4 (r31)
+813014B8  3C804330  lis         r4, 0x4330
+813014BC  A01F0008  lhz         r0, 8 (r31)
+813014C0  90A10014  stw         r5, 20 (r1)
+813014C4  C0228038  lfs         fr1, -0x7FC8 (r2)
+813014C8  9001000C  stw         r0, 12 (r1)
+813014CC  C8828040  lfd         fr4, -0x7FC0 (r2)
+813014D0  FC400890  fmr         fr2, fr1
+813014D4  90810010  stw         r4, 16 (r1)
+813014D8  FCA00890  fmr         fr5, fr1
+813014DC  C0C2803C  lfs         fr6, -0x7FC4 (r2)
+813014E0  90810008  stw         r4, 8 (r1)
+813014E4  C8610010  lfd         fr3, 16 (r1)
+813014E8  C8010008  lfd         fr0, 8 (r1)
+813014EC  EC632028  fsubs       fr3, fr3, fr4
+813014F0  EC802028  fsubs       fr4, fr0, fr4
+813014F4  48078AE5  bl          GXSetViewportJitter 
+813014F8  48000054  b           0x8130154C 
+813014FC  A0850004  lhz         r4, 4 (r5)
+81301500  3C604330  lis         r3, 0x4330
+81301504  A0050008  lhz         r0, 8 (r5)
+81301508  9081000C  stw         r4, 12 (r1)
+8130150C  C0228038  lfs         fr1, -0x7FC8 (r2)
+81301510  90010014  stw         r0, 20 (r1)
+81301514  C8828040  lfd         fr4, -0x7FC0 (r2)
+81301518  FC400890  fmr         fr2, fr1
+8130151C  90610008  stw         r3, 8 (r1)
+81301520  FCA00890  fmr         fr5, fr1
+81301524  C0E2804C  lfs         fr7, -0x7FB4 (r2)
+81301528  90610010  stw         r3, 16 (r1)
+8130152C  C8610008  lfd         fr3, 8 (r1)
+81301530  C8010010  lfd         fr0, 16 (r1)
+81301534  EC632028  fsubs       fr3, fr3, fr4
+81301538  C0C2803C  lfs         fr6, -0x7FC4 (r2)
+8130153C  EC002028  fsubs       fr0, fr0, fr4
+81301540  EC67182A  fadds       fr3, fr7, fr3
+81301544  EC87002A  fadds       fr4, fr7, fr0
+81301548  48078BAD  bl          0x8137A0F4 
+8130154C  48074A55  bl          GXInvalidateVtxCache 
+81301550  48076DED  bl          GXInvalidateTexAll 
+81301554  808D82FC  lwz         r4, -0x7D04 (r13)
+81301558  88040019  lbz         r0, 25 (r4)
+8130155C  28000000  cmplwi      r0, 0
+81301560  41820030  beq-        0x81301590 
+81301564  A0040008  lhz         r0, 8 (r4)
+81301568  280001B8  cmplwi      r0, 0x01B8
+8130156C  41800024  blt-        0x81301590 
+81301570  A0A40004  lhz         r5, 4 (r4)
+81301574  38600000  li          r3, 0
+81301578  A0C40006  lhz         r6, 6 (r4)
+8130157C  38800000  li          r4, 0
+81301580  48078B99  bl          GXSetScissor 
+81301584  38600000  li          r3, 0
+81301588  38800000  li          r4, 0
+8130158C  48078C3D  bl          GXSetScissorBoxOffset 
+81301590  80010024  lwz         r0, 36 (r1)
+81301594  83E1001C  lwz         r31, 28 (r1)
+81301598  38210020  addi        r1, r1, 32
+8130159C  7C0803A6  mtlr        r0
+813015A0  4E800020  blr

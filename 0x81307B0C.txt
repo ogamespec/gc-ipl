@@ -1,0 +1,113 @@
+81307B0C  7C0802A6  mflr        r0
+81307B10  5465063E  rlwinm      r5, r3, 0, 24, 31           mask:0x000000FF
+81307B14  90010004  stw         r0, 4 (r1)
+81307B18  20850010  subfic      r4, r5, 16
+81307B1C  38000001  li          r0, 1
+81307B20  9421FFC0  stwu        r1, -64 (r1)
+81307B24  28050000  cmplwi      r5, 0
+81307B28  38C00000  li          r6, 0
+81307B2C  DBE10038  stfd        fr31, 56 (r1)
+81307B30  DBC10030  stfd        fr30, 48 (r1)
+81307B34  93E1002C  stw         r31, 44 (r1)
+81307B38  93C10028  stw         r30, 40 (r1)
+81307B3C  93A10024  stw         r29, 36 (r1)
+81307B40  908D837C  stw         r4, -0x7C84 (r13)
+81307B44  B00D8378  sth         r0, -0x7C88 (r13)
+81307B48  408100AC  ble-        0x81307BF4 
+81307B4C  28050008  cmplwi      r5, 8
+81307B50  3803FFF8  subi        r0, r3, 8
+81307B54  4081007C  ble-        0x81307BD0 
+81307B58  5400063E  rlwinm      r0, r0, 0, 24, 31           mask:0x000000FF
+81307B5C  48000068  b           0x81307BC4 
+81307B60  A08D8378  lhz         r4, -0x7C88 (r13)
+81307B64  38C60008  addi        r6, r6, 8
+81307B68  5484083C  rlwinm      r4, r4, 1, 0, 30            mask:0xFFFFFFFE
+81307B6C  B08D8378  sth         r4, -0x7C88 (r13)
+81307B70  A08D8378  lhz         r4, -0x7C88 (r13)
+81307B74  5484083C  rlwinm      r4, r4, 1, 0, 30            mask:0xFFFFFFFE
+81307B78  B08D8378  sth         r4, -0x7C88 (r13)
+81307B7C  A08D8378  lhz         r4, -0x7C88 (r13)
+81307B80  5484083C  rlwinm      r4, r4, 1, 0, 30            mask:0xFFFFFFFE
+81307B84  B08D8378  sth         r4, -0x7C88 (r13)
+81307B88  A08D8378  lhz         r4, -0x7C88 (r13)
+81307B8C  5484083C  rlwinm      r4, r4, 1, 0, 30            mask:0xFFFFFFFE
+81307B90  B08D8378  sth         r4, -0x7C88 (r13)
+81307B94  A08D8378  lhz         r4, -0x7C88 (r13)
+81307B98  5484083C  rlwinm      r4, r4, 1, 0, 30            mask:0xFFFFFFFE
+81307B9C  B08D8378  sth         r4, -0x7C88 (r13)
+81307BA0  A08D8378  lhz         r4, -0x7C88 (r13)
+81307BA4  5484083C  rlwinm      r4, r4, 1, 0, 30            mask:0xFFFFFFFE
+81307BA8  B08D8378  sth         r4, -0x7C88 (r13)
+81307BAC  A08D8378  lhz         r4, -0x7C88 (r13)
+81307BB0  5484083C  rlwinm      r4, r4, 1, 0, 30            mask:0xFFFFFFFE
+81307BB4  B08D8378  sth         r4, -0x7C88 (r13)
+81307BB8  A08D8378  lhz         r4, -0x7C88 (r13)
+81307BBC  5484083C  rlwinm      r4, r4, 1, 0, 30            mask:0xFFFFFFFE
+81307BC0  B08D8378  sth         r4, -0x7C88 (r13)
+81307BC4  54C4063E  rlwinm      r4, r6, 0, 24, 31           mask:0x000000FF
+81307BC8  7C040040  cmplw       r4, r0
+81307BCC  4180FF94  blt+        0x81307B60 
+81307BD0  5460063E  rlwinm      r0, r3, 0, 24, 31           mask:0x000000FF
+81307BD4  48000014  b           0x81307BE8 
+81307BD8  A06D8378  lhz         r3, -0x7C88 (r13)
+81307BDC  38C60001  addi        r6, r6, 1
+81307BE0  5463083C  rlwinm      r3, r3, 1, 0, 30            mask:0xFFFFFFFE
+81307BE4  B06D8378  sth         r3, -0x7C88 (r13)
+81307BE8  54C3063E  rlwinm      r3, r6, 0, 24, 31           mask:0x000000FF
+81307BEC  7C030040  cmplw       r3, r0
+81307BF0  4180FFE8  blt+        0x81307BD8 
+81307BF4  A06D8378  lhz         r3, -0x7C88 (r13)
+81307BF8  7C601670  srawi       r0, r3, 2
+81307BFC  7C000194  addze       r0, r0
+81307C00  7C030214  add         r0, r3, r0
+81307C04  5403103A  rlwinm      r3, r0, 2, 0, 29            mask:0xFFFFFFFC
+81307C08  48000239  bl          0x81307E40 
+81307C0C  906D8380  stw         r3, -0x7C80 (r13)
+81307C10  800D8380  lwz         r0, -0x7C80 (r13)
+81307C14  28000000  cmplwi      r0, 0
+81307C18  4082000C  bne-        0x81307C24 
+81307C1C  38600000  li          r3, 0
+81307C20  4800008C  b           0x81307CAC 
+81307C24  C3C28118  lfs         fr30, -0x7EE8 (r2)
+81307C28  3BA00000  li          r29, 0
+81307C2C  CBE28120  lfd         fr31, -0x7EE0 (r2)
+81307C30  3BC00000  li          r30, 0
+81307C34  3FE04330  lis         r31, 0x4330
+81307C38  48000044  b           0x81307C7C 
+81307C3C  9081001C  stw         r4, 28 (r1)
+81307C40  57A0043E  rlwinm      r0, r29, 0, 16, 31          mask:0x0000FFFF
+81307C44  93E10018  stw         r31, 24 (r1)
+81307C48  C8010018  lfd         fr0, 24 (r1)
+81307C4C  90010014  stw         r0, 20 (r1)
+81307C50  EC00F828  fsubs       fr0, fr0, fr31
+81307C54  93E10010  stw         r31, 16 (r1)
+81307C58  EC3E0024  fdivs       fr1, fr30, fr0
+81307C5C  C8010010  lfd         fr0, 16 (r1)
+81307C60  EC00F828  fsubs       fr0, fr0, fr31
+81307C64  EC210032  fmuls       fr1, fr1, fr0
+81307C68  48076C11  bl          sinf 
+81307C6C  806D8380  lwz         r3, -0x7C80 (r13)
+81307C70  3BBD0001  addi        r29, r29, 1
+81307C74  7C23F52E  stfsx       fr1, r3, r30
+81307C78  3BDE0004  addi        r30, r30, 4
+81307C7C  A08D8378  lhz         r4, -0x7C88 (r13)
+81307C80  57A3043E  rlwinm      r3, r29, 0, 16, 31          mask:0x0000FFFF
+81307C84  7C851670  srawi       r5, r4, 2
+81307C88  7CA50194  addze       r5, r5
+81307C8C  7C042A14  add         r0, r4, r5
+81307C90  7C030000  cmpw        r3, r0
+81307C94  4180FFA8  blt+        0x81307C3C 
+81307C98  808D8380  lwz         r4, -0x7C80 (r13)
+81307C9C  54A0103A  rlwinm      r0, r5, 2, 0, 29            mask:0xFFFFFFFC
+81307CA0  38600001  li          r3, 1
+81307CA4  7C040214  add         r0, r4, r0
+81307CA8  900D8384  stw         r0, -0x7C7C (r13)
+81307CAC  80010044  lwz         r0, 68 (r1)
+81307CB0  CBE10038  lfd         fr31, 56 (r1)
+81307CB4  CBC10030  lfd         fr30, 48 (r1)
+81307CB8  83E1002C  lwz         r31, 44 (r1)
+81307CBC  83C10028  lwz         r30, 40 (r1)
+81307CC0  83A10024  lwz         r29, 36 (r1)
+81307CC4  38210040  addi        r1, r1, 64
+81307CC8  7C0803A6  mtlr        r0
+81307CCC  4E800020  blr

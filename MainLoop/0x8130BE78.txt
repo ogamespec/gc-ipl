@@ -1,0 +1,25 @@
+8130BE78  7C0802A6  mflr        r0
+8130BE7C  90010004  stw         r0, 4 (r1)
+8130BE80  9421FFF8  stwu        r1, -8 (r1)
+8130BE84  800D83F8  lwz         r0, -0x7C08 (r13)
+8130BE88  28000006  cmplwi      r0, 6
+8130BE8C  41810040  bgt-        0x8130BECC 
+8130BE90  3C608138  lis         r3, 0x8138
+8130BE94  38631104  addi        r3, r3, 0x1104
+8130BE98  5400103A  rlwinm      r0, r0, 2, 0, 29            mask:0xFFFFFFFC
+8130BE9C  7C03002E  lwzx        r0, r3, r0
+8130BEA0  7C0903A6  mtctr       r0
+8130BEA4  4E800420  bctr         
+8130BEA8  48001895  bl          0x8130D73C 
+8130BEAC  48000020  b           0x8130BECC 
+8130BEB0  48001E2D  bl          0x8130DCDC 
+8130BEB4  48000018  b           0x8130BECC 
+8130BEB8  480022C5  bl          0x8130E17C 
+8130BEBC  48000010  b           0x8130BECC 
+8130BEC0  48002509  bl          0x8130E3C8 
+8130BEC4  48000008  b           0x8130BECC 
+8130BEC8  480026F9  bl          0x8130E5C0 
+8130BECC  8001000C  lwz         r0, 12 (r1)
+8130BED0  38210008  addi        r1, r1, 8
+8130BED4  7C0803A6  mtlr        r0
+8130BED8  4E800020  blr

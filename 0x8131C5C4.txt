@@ -1,0 +1,211 @@
+8131C5C4  7C0802A6  mflr        r0
+8131C5C8  3C600059  lis         r3, 0x0059
+8131C5CC  90010004  stw         r0, 4 (r1)
+8131C5D0  3C80814B  lis         r4, 0x814B
+8131C5D4  38634C00  addi        r3, r3, 0x4C00
+8131C5D8  9421FFD8  stwu        r1, -40 (r1)
+8131C5DC  BF610014  stmw        r27, 20 (r1)
+8131C5E0  3BE47280  addi        r31, r4, 0x7280
+8131C5E4  4BFEB85D  bl          0x81307E40 
+8131C5E8  3BC30000  addi        r30, r3, 0
+8131C5EC  38603F80  li          r3, 0x3F80
+8131C5F0  4BFEB851  bl          0x81307E40 
+8131C5F4  3800000F  li          r0, 15
+8131C5F8  3FBF0001  addis       r29, r31, 1
+8131C5FC  7C0903A6  mtctr       r0
+8131C600  3F7F0001  addis       r27, r31, 1
+8131C604  399E0000  addi        r12, r30, 0
+8131C608  3B830000  addi        r28, r3, 0
+8131C60C  38800000  li          r4, 0
+8131C610  3BBDCFA8  subi        r29, r29, 0x3058
+8131C614  3B7BD3A0  subi        r27, r27, 0x2C60
+8131C618  919D0000  stw         r12, 0 (r29)
+8131C61C  3D0C0001  addis       r8, r12, 1
+8131C620  3CAC0002  addis       r5, r12, 2
+8131C624  939B0000  stw         r28, 0 (r27)
+8131C628  380C5A00  addi        r0, r12, 0x5A00
+8131C62C  3D8C0003  addis       r12, r12, 3
+8131C630  901D0004  stw         r0, 4 (r29)
+8131C634  38DC0040  addi        r6, r28, 64
+8131C638  3808B400  subi        r0, r8, 0x4C00
+8131C63C  90DB0004  stw         r6, 4 (r27)
+8131C640  38FC0080  addi        r7, r28, 128
+8131C644  38C80E00  addi        r6, r8, 0x0E00
+8131C648  901D0008  stw         r0, 8 (r29)
+8131C64C  39686800  addi        r11, r8, 0x6800
+8131C650  381C00C0  addi        r0, r28, 192
+8131C654  90FB0008  stw         r7, 8 (r27)
+8131C658  395C0100  addi        r10, r28, 256
+8131C65C  3925C200  subi        r9, r5, 0x3E00
+8131C660  90DD000C  stw         r6, 12 (r29)
+8131C664  38E51C00  addi        r7, r5, 0x1C00
+8131C668  391C0140  addi        r8, r28, 0x0140
+8131C66C  901B000C  stw         r0, 12 (r27)
+8131C670  38DC0180  addi        r6, r28, 0x0180
+8131C674  381C01C0  addi        r0, r28, 0x01C0
+8131C678  917D0010  stw         r11, 16 (r29)
+8131C67C  38A57600  addi        r5, r5, 0x7600
+8131C680  398CD000  subi        r12, r12, 0x3000
+8131C684  915B0010  stw         r10, 16 (r27)
+8131C688  3B9C0200  addi        r28, r28, 0x0200
+8131C68C  38840008  addi        r4, r4, 8
+8131C690  913D0014  stw         r9, 20 (r29)
+8131C694  911B0014  stw         r8, 20 (r27)
+8131C698  90FD0018  stw         r7, 24 (r29)
+8131C69C  90DB0018  stw         r6, 24 (r27)
+8131C6A0  90BD001C  stw         r5, 28 (r29)
+8131C6A4  3BBD0020  addi        r29, r29, 32
+8131C6A8  901B001C  stw         r0, 28 (r27)
+8131C6AC  3B7B0020  addi        r27, r27, 32
+8131C6B0  4200FF68  bdnz+       0x8131C618 
+8131C6B4  48000210  b           0x8131C8C4 
+8131C6B8  2004007F  subfic      r0, r4, 127
+8131C6BC  2C04007F  cmpwi       r4, 127
+8131C6C0  7C0903A6  mtctr       r0
+8131C6C4  4080001C  bge-        0x8131C6E0 
+8131C6C8  90A70000  stw         r5, 0 (r7)
+8131C6CC  38A55A00  addi        r5, r5, 0x5A00
+8131C6D0  90C703F8  stw         r6, 0x03F8 (r7)
+8131C6D4  38E70004  addi        r7, r7, 4
+8131C6D8  38C60040  addi        r6, r6, 64
+8131C6DC  4200FFEC  bdnz+       0x8131C6C8 
+8131C6E0  3800000F  li          r0, 15
+8131C6E4  3C9F0001  addis       r4, r31, 1
+8131C6E8  7C0903A6  mtctr       r0
+8131C6EC  3CBF0001  addis       r5, r31, 1
+8131C6F0  38C00000  li          r6, 0
+8131C6F4  3884CFA8  subi        r4, r4, 0x3058
+8131C6F8  38A5D3A0  subi        r5, r5, 0x2C60
+8131C6FC  3906007F  addi        r8, r6, 127
+8131C700  1C085A00  mulli       r0, r8, 0x5A00
+8131C704  7C1E0214  add         r0, r30, r0
+8131C708  55093032  rlwinm      r9, r8, 6, 0, 25            mask:0xFFFFFFC0
+8131C70C  900401FC  stw         r0, 0x01FC (r4)
+8131C710  38E60080  addi        r7, r6, 128
+8131C714  1C075A00  mulli       r0, r7, 0x5A00
+8131C718  7D234A14  add         r9, r3, r9
+8131C71C  912501FC  stw         r9, 0x01FC (r5)
+8131C720  7C1E0214  add         r0, r30, r0
+8131C724  54E73032  rlwinm      r7, r7, 6, 0, 25            mask:0xFFFFFFC0
+8131C728  39060081  addi        r8, r6, 129
+8131C72C  90040200  stw         r0, 0x0200 (r4)
+8131C730  7CE33A14  add         r7, r3, r7
+8131C734  1C085A00  mulli       r0, r8, 0x5A00
+8131C738  90E50200  stw         r7, 0x0200 (r5)
+8131C73C  7CFE0214  add         r7, r30, r0
+8131C740  55003032  rlwinm      r0, r8, 6, 0, 25            mask:0xFFFFFFC0
+8131C744  90E40204  stw         r7, 0x0204 (r4)
+8131C748  7D830214  add         r12, r3, r0
+8131C74C  39660082  addi        r11, r6, 130
+8131C750  91850204  stw         r12, 0x0204 (r5)
+8131C754  1CEB5A00  mulli       r7, r11, 0x5A00
+8131C758  7CFE3A14  add         r7, r30, r7
+8131C75C  556B3032  rlwinm      r11, r11, 6, 0, 25          mask:0xFFFFFFC0
+8131C760  90E40208  stw         r7, 0x0208 (r4)
+8131C764  39460083  addi        r10, r6, 131
+8131C768  1CEA5A00  mulli       r7, r10, 0x5A00
+8131C76C  7D635A14  add         r11, r3, r11
+8131C770  91650208  stw         r11, 0x0208 (r5)
+8131C774  7D7E3A14  add         r11, r30, r7
+8131C778  39260084  addi        r9, r6, 132
+8131C77C  554A3032  rlwinm      r10, r10, 6, 0, 25          mask:0xFFFFFFC0
+8131C780  9164020C  stw         r11, 0x020C (r4)
+8131C784  1CE95A00  mulli       r7, r9, 0x5A00
+8131C788  7D435214  add         r10, r3, r10
+8131C78C  9145020C  stw         r10, 0x020C (r5)
+8131C790  7D5E3A14  add         r10, r30, r7
+8131C794  39060085  addi        r8, r6, 133
+8131C798  55293032  rlwinm      r9, r9, 6, 0, 25            mask:0xFFFFFFC0
+8131C79C  91440210  stw         r10, 0x0210 (r4)
+8131C7A0  1CE85A00  mulli       r7, r8, 0x5A00
+8131C7A4  7D234A14  add         r9, r3, r9
+8131C7A8  91250210  stw         r9, 0x0210 (r5)
+8131C7AC  38060086  addi        r0, r6, 134
+8131C7B0  7D3E3A14  add         r9, r30, r7
+8131C7B4  1CE05A00  mulli       r7, r0, 0x5A00
+8131C7B8  91240214  stw         r9, 0x0214 (r4)
+8131C7BC  55083032  rlwinm      r8, r8, 6, 0, 25            mask:0xFFFFFFC0
+8131C7C0  7D034214  add         r8, r3, r8
+8131C7C4  54003032  rlwinm      r0, r0, 6, 0, 25            mask:0xFFFFFFC0
+8131C7C8  91050214  stw         r8, 0x0214 (r5)
+8131C7CC  7CFE3A14  add         r7, r30, r7
+8131C7D0  90E40218  stw         r7, 0x0218 (r4)
+8131C7D4  7C030214  add         r0, r3, r0
+8131C7D8  38C60008  addi        r6, r6, 8
+8131C7DC  90050218  stw         r0, 0x0218 (r5)
+8131C7E0  38A50020  addi        r5, r5, 32
+8131C7E4  38840020  addi        r4, r4, 32
+8131C7E8  4200FF14  bdnz+       0x8131C6FC 
+8131C7EC  480000FC  b           0x8131C8E8 
+8131C7F0  2006007F  subfic      r0, r6, 127
+8131C7F4  2C06007F  cmpwi       r6, 127
+8131C7F8  7C0903A6  mtctr       r0
+8131C7FC  4080002C  bge-        0x8131C828 
+8131C800  38A6007F  addi        r5, r6, 127
+8131C804  1C055A00  mulli       r0, r5, 0x5A00
+8131C808  7C9E0214  add         r4, r30, r0
+8131C80C  54A03032  rlwinm      r0, r5, 6, 0, 25            mask:0xFFFFFFC0
+8131C810  908701FC  stw         r4, 0x01FC (r7)
+8131C814  7C030214  add         r0, r3, r0
+8131C818  900705F4  stw         r0, 0x05F4 (r7)
+8131C81C  38E70004  addi        r7, r7, 4
+8131C820  38C60001  addi        r6, r6, 1
+8131C824  4200FFDC  bdnz+       0x8131C800 
+8131C828  38605A00  li          r3, 0x5A00
+8131C82C  4BFEB615  bl          0x81307E40 
+8131C830  906D8504  stw         r3, -0x7AFC (r13)
+8131C834  3C600004  lis         r3, 0x0004
+8131C838  4BFEB609  bl          0x81307E40 
+8131C83C  906D8500  stw         r3, -0x7B00 (r13)
+8131C840  3FC00001  lis         r30, 0x0001
+8131C844  387EA000  subi        r3, r30, 0x6000
+8131C848  4BFEB5F9  bl          0x81307E40 
+8131C84C  906D84F0  stw         r3, -0x7B10 (r13)
+8131C850  387EA000  subi        r3, r30, 0x6000
+8131C854  4BFEB5ED  bl          0x81307E40 
+8131C858  388D84F0  subi        r4, r13, 0x7B10
+8131C85C  90640004  stw         r3, 4 (r4)
+8131C860  387F0C10  addi        r3, r31, 0x0C10
+8131C864  389F0C50  addi        r4, r31, 0x0C50
+8131C868  38A00010  li          r5, 16
+8131C86C  48043245  bl          OSInitMessageQueue 
+8131C870  387F0C30  addi        r3, r31, 0x0C30
+8131C874  389F0C90  addi        r4, r31, 0x0C90
+8131C878  38A00010  li          r5, 16
+8131C87C  48043235  bl          OSInitMessageQueue 
+8131C880  3C608132  lis         r3, 0x8132
+8131C884  3CDF0001  addis       r6, r31, 1
+8131C888  3883C9F8  subi        r4, r3, 0x3608
+8131C88C  387F0CD0  addi        r3, r31, 0x0CD0
+8131C890  38FE8000  subi        r7, r30, -0x8000
+8131C894  38A00000  li          r5, 0
+8131C898  39000011  li          r8, 17
+8131C89C  39200001  li          r9, 1
+8131C8A0  38C68FE0  subi        r6, r6, 0x7020
+8131C8A4  48046511  bl          0x81362DB4 
+8131C8A8  387F0CD0  addi        r3, r31, 0x0CD0
+8131C8AC  480468C9  bl          OSResumeThread 
+8131C8B0  48000061  bl          0x8131C910 
+8131C8B4  3880000A  li          r4, 10
+8131C8B8  38A00000  li          r5, 0
+8131C8BC  48043255  bl          OSSendMessage 
+8131C8C0  4800003C  b           0x8131C8FC 
+8131C8C4  1CC45A00  mulli       r6, r4, 0x5A00
+8131C8C8  3CBF0001  addis       r5, r31, 1
+8131C8CC  5487103A  rlwinm      r7, r4, 2, 0, 29            mask:0xFFFFFFFC
+8131C8D0  7CE53A14  add         r7, r5, r7
+8131C8D4  54803032  rlwinm      r0, r4, 6, 0, 25            mask:0xFFFFFFC0
+8131C8D8  7CBE3214  add         r5, r30, r6
+8131C8DC  7CC30214  add         r6, r3, r0
+8131C8E0  38E7CFA8  subi        r7, r7, 0x3058
+8131C8E4  4BFFFDD4  b           0x8131C6B8 
+8131C8E8  3C1F0001  addis       r0, r31, 1
+8131C8EC  54C4103A  rlwinm      r4, r6, 2, 0, 29            mask:0xFFFFFFFC
+8131C8F0  7CE02214  add         r7, r0, r4
+8131C8F4  38E7CFA8  subi        r7, r7, 0x3058
+8131C8F8  4BFFFEF8  b           0x8131C7F0 
+8131C8FC  BB610014  lmw         r27, 20 (r1)
+8131C900  8001002C  lwz         r0, 44 (r1)
+8131C904  38210028  addi        r1, r1, 40
+8131C908  7C0803A6  mtlr        r0
+8131C90C  4E800020  blr

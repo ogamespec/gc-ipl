@@ -1,0 +1,102 @@
+81302DF0  7C0802A6  mflr        r0
+81302DF4  3C608138  lis         r3, 0x8138
+81302DF8  90010004  stw         r0, 4 (r1)
+81302DFC  9421FFB0  stwu        r1, -80 (r1)
+81302E00  93E1004C  stw         r31, 76 (r1)
+81302E04  93C10048  stw         r30, 72 (r1)
+81302E08  93A10044  stw         r29, 68 (r1)
+81302E0C  3BA3EB28  subi        r29, r3, 0x14D8
+81302E10  4BFFE2E9  bl          0x813010F8 
+81302E14  7C7E1B78  or          r30, r3, r3
+81302E18  48009431  bl          0x8130C248 
+81302E1C  809D0000  lwz         r4, 0 (r29)
+81302E20  7C7F1B78  or          r31, r3, r3
+81302E24  801D0004  lwz         r0, 4 (r29)
+81302E28  C0028090  lfs         fr0, -0x7F70 (r2)
+81302E2C  90810020  stw         r4, 32 (r1)
+81302E30  90010024  stw         r0, 36 (r1)
+81302E34  801D0008  lwz         r0, 8 (r29)
+81302E38  90010028  stw         r0, 40 (r1)
+81302E3C  807D000C  lwz         r3, 12 (r29)
+81302E40  801D0010  lwz         r0, 16 (r29)
+81302E44  90610014  stw         r3, 20 (r1)
+81302E48  90010018  stw         r0, 24 (r1)
+81302E4C  801D0014  lwz         r0, 20 (r29)
+81302E50  9001001C  stw         r0, 28 (r1)
+81302E54  807D0018  lwz         r3, 24 (r29)
+81302E58  801D001C  lwz         r0, 28 (r29)
+81302E5C  90610008  stw         r3, 8 (r1)
+81302E60  9001000C  stw         r0, 12 (r1)
+81302E64  801D0020  lwz         r0, 32 (r29)
+81302E68  90010010  stw         r0, 16 (r1)
+81302E6C  D0010014  stfs        fr0, 20 (r1)
+81302E70  D0010018  stfs        fr0, 24 (r1)
+81302E74  C0428098  lfs         fr2, -0x7F68 (r2)
+81302E78  C03E0008  lfs         fr1, 8 (r30)
+81302E7C  C002809C  lfs         fr0, -0x7F64 (r2)
+81302E80  EC220072  fmuls       fr1, fr2, fr1
+81302E84  EC210024  fdivs       fr1, fr1, fr0
+81302E88  4807B7D9  bl          tanf 
+81302E8C  C0028094  lfs         fr0, -0x7F6C (r2)
+81302E90  3C60814B  lis         r3, 0x814B
+81302E94  3863F660  subi        r3, r3, 0x09A0
+81302E98  EC000824  fdivs       fr0, fr0, fr1
+81302E9C  38810014  addi        r4, r1, 20
+81302EA0  38A10020  addi        r5, r1, 32
+81302EA4  38C10008  addi        r6, r1, 8
+81302EA8  D001001C  stfs        fr0, 28 (r1)
+81302EAC  480616F5  bl          C_MTXLookAt 
+81302EB0  48009031  bl          0x8130BEE0 
+81302EB4  2C030005  cmpwi       r3, 5
+81302EB8  41820078  beq-        0x81302F30 
+81302EBC  4080007C  bge-        0x81302F38 
+81302EC0  2C030004  cmpwi       r3, 4
+81302EC4  40800008  bge-        0x81302ECC 
+81302EC8  48000070  b           0x81302F38 
+81302ECC  801F003C  lwz         r0, 60 (r31)
+81302ED0  A89F0028  lha         r4, 40 (r31)
+81302ED4  7C002000  cmpw        r0, r4
+81302ED8  41810050  bgt-        0x81302F28 
+81302EDC  6C008000  xoris       r0, r0, 0x8000
+81302EE0  C09E0014  lfs         fr4, 20 (r30)
+81302EE4  9001003C  stw         r0, 60 (r1)
+81302EE8  3C604330  lis         r3, 0x4330
+81302EEC  6C808000  xoris       r0, r4, 0x8000
+81302EF0  C01E0018  lfs         fr0, 24 (r30)
+81302EF4  90610038  stw         r3, 56 (r1)
+81302EF8  C86280A0  lfd         fr3, -0x7F60 (r2)
+81302EFC  EC240028  fsubs       fr1, fr4, fr0
+81302F00  90010034  stw         r0, 52 (r1)
+81302F04  C8010038  lfd         fr0, 56 (r1)
+81302F08  90610030  stw         r3, 48 (r1)
+81302F0C  EC401828  fsubs       fr2, fr0, fr3
+81302F10  C8010030  lfd         fr0, 48 (r1)
+81302F14  EC220072  fmuls       fr1, fr2, fr1
+81302F18  EC001828  fsubs       fr0, fr0, fr3
+81302F1C  EC010024  fdivs       fr0, fr1, fr0
+81302F20  EC240028  fsubs       fr1, fr4, fr0
+81302F24  48000018  b           0x81302F3C 
+81302F28  C03E0018  lfs         fr1, 24 (r30)
+81302F2C  48000010  b           0x81302F3C 
+81302F30  C03E0018  lfs         fr1, 24 (r30)
+81302F34  48000008  b           0x81302F3C 
+81302F38  C03E0014  lfs         fr1, 20 (r30)
+81302F3C  C0010018  lfs         fr0, 24 (r1)
+81302F40  3C60814B  lis         r3, 0x814B
+81302F44  3863F630  subi        r3, r3, 0x09D0
+81302F48  EC00082A  fadds       fr0, fr0, fr1
+81302F4C  38810014  addi        r4, r1, 20
+81302F50  38A10020  addi        r5, r1, 32
+81302F54  38C10008  addi        r6, r1, 8
+81302F58  D0010018  stfs        fr0, 24 (r1)
+81302F5C  C001000C  lfs         fr0, 12 (r1)
+81302F60  EC00082A  fadds       fr0, fr0, fr1
+81302F64  D001000C  stfs        fr0, 12 (r1)
+81302F68  48061639  bl          C_MTXLookAt 
+81302F6C  80010054  lwz         r0, 84 (r1)
+81302F70  83E1004C  lwz         r31, 76 (r1)
+81302F74  83C10048  lwz         r30, 72 (r1)
+81302F78  83A10044  lwz         r29, 68 (r1)
+81302F7C  38210050  addi        r1, r1, 80
+81302F80  7C0803A6  mtlr        r0
+81302F84  4E800020  blr

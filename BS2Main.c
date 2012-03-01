@@ -57,7 +57,7 @@ void BS2Main (void)
         0x81301644 ();
         GXFlush ();
         0x81301724 ();
-        0x8130BEDC ();
+        0x8130BEDC ();  // blr
         0x8131C268 ();
         0x81302368 ();
     }
