@@ -1,0 +1,20 @@
+81307E40  7C0802A6  mflr        r0
+81307E44  7C641B78  or          r4, r3, r3
+81307E48  90010004  stw         r0, 4 (r1)
+81307E4C  9421FFE8  stwu        r1, -24 (r1)
+81307E50  93E10014  stw         r31, 20 (r1)
+81307E54  806D8388  lwz         r3, -0x7C78 (r13)
+81307E58  48054765  bl          OSAllocFromHeap 
+81307E5C  7C7F1B79  or.         r31, r3, r3
+81307E60  40820018  bne-        0x81307E78 
+81307E64  4CC63182  crclr       6
+81307E68  386D8020  subi        r3, r13, 0x7FE0
+81307E6C  38800041  li          r4, 65
+81307E70  38AD8028  subi        r5, r13, 0x7FD8
+81307E74  48055B31  bl          OSPanic 
+81307E78  7FE3FB78  or          r3, r31, r31
+81307E7C  8001001C  lwz         r0, 28 (r1)
+81307E80  83E10014  lwz         r31, 20 (r1)
+81307E84  38210018  addi        r1, r1, 24
+81307E88  7C0803A6  mtlr        r0
+81307E8C  4E800020  blr
