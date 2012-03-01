@@ -38,6 +38,8 @@ void BS2Main (void)
     OSGetSoundMode ();
     0x8135B160 ();  // ???
 
+    Main Loop:
+
     while (1) {
         0x81302B24 ();
         0x813020C8 ();
