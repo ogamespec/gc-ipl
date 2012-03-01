@@ -1,3 +1,9 @@
+void DVDStep (void);
+
+void DVDStep (void)
+{
+}
+
 /*
 
 81300598  9421FF90  stwu        r1, -112 (r1)
