@@ -1,0 +1,9 @@
+
+1. Compile BS.
+- Open \Bootstrap\Bootstrap.mcp in CodeWarrior and press F7. It should compile Bootstrap.elf
+- Now you need to strip .text section from it. Run \Bootstrap\extract_text.bat (you need objcopy tool)
+- Finally you get bs.bin which is first 0x800 bytes of bootrom.
+
+2. Compile IPL.
+
+3. Merge all things together.
