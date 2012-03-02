@@ -1,0 +1,11 @@
+/* #line 1	"default.lcf.h"	/* stack depth 0 */
+/* #line 1	"boot.h"	/* stack depth 1 */
+/* #line 34	"default.lcf.h"	/* stack depth 0 */
+MEMORY {
+text : origin = 0xfff00000
+}
+SECTIONS {
+GROUP:{
+.text ALIGN(0x20):{}
+} > text
+}
