@@ -266,11 +266,8 @@ int DVDStep (void)
     switch ( DvdState )
     {
         case 0:
-813009BC  3C608000  lis         r3, 0x8000
-813009C0  386330D4  addi        r3, r3, 0x30D4
-813009C4  38000001  li          r0, 1
-813009C8  906D82B8  stw         r3, -0x7D48 (r13)
-813009CC  900D82A8  stw         r0, -0x7D58 (r13)
+            var_7D48 = 0x800030D4
+            DvdState = 1;
 
         case 1:
 813009D0  48062E4D  bl          __OSGetSystemTime 
@@ -349,31 +346,23 @@ int DVDStep (void)
 81300AEC  900D82A8  stw         r0, -0x7D58 (r13)
 
         case 3:
-81300AF0  3C608130  lis         r3, 0x8130
-81300AF4  38A3060C  addi        r5, r3, 0x060C
-81300AF8  387F0040  addi        r3, r31, 64
-81300AFC  3C808000  lis         r4, 0x8000
-81300B00  480673C9  bl          DVDReadDiskID 
-81300B04  38000004  li          r0, 4
-81300B08  900D82A8  stw         r0, -0x7D58 (r13)
-81300B0C  48000408  b           0x81300F14 
+            DVDReadDiskID ( r31+64, 0x80000000, 0x8130060C );
+            DvdState = 4;
+            break;
 
         case 4:
         case 5:
-81300B10  387F0040  addi        r3, r31, 64
-81300B14  4BFFFD9D  bl          0x813008B0 
-81300B18  2C030000  cmpwi       r3, 0
-81300B1C  418203F8  beq-        0x81300F14 
-81300B20  3C608000  lis         r3, 0x8000
-81300B24  8063001C  lwz         r3, 28 (r3)
-81300B28  3C033DCD  addis       r0, r3, 0x3DCD
-81300B2C  28009F3D  cmplwi      r0, -0x60C3
-81300B30  41820010  beq-        0x81300B40 
-81300B34  38000014  li          r0, 20
-81300B38  900D82A8  stw         r0, -0x7D58 (r13)
-81300B3C  480003D8  b           0x81300F14 
-81300B40  38000006  li          r0, 6
-81300B44  900D82A8  stw         r0, -0x7D58 (r13)
+            if ( 0x813008B0 ( r1+64) )
+            {
+                
+                if ( [0x8000001C] + 0x3DCD0000 != 0xFFFF9F3D )
+                {
+                    DvdState = 20;
+                    break;
+                }
+                DvdState = 6;
+            }
+            else break;
 
         case 6:
 81300B48  800D82D4  lwz         r0, -0x7D2C (r13)
@@ -410,76 +399,37 @@ int DVDStep (void)
 81300BC4  48000350  b           0x81300F14 
 
         case 7:
-81300BC8  387F0040  addi        r3, r31, 64
-81300BCC  4BFFFCE5  bl          0x813008B0 
-81300BD0  2C030000  cmpwi       r3, 0
-81300BD4  41820340  beq-        0x81300F14 
-81300BD8  38000008  li          r0, 8
-81300BDC  900D82A8  stw         r0, -0x7D58 (r13)
+            if ( 0x813008B0 (r31+64) == 0 ) break;
+            DvdState = 8;
 
         case 8:
-81300BE0  3C608130  lis         r3, 0x8130
-81300BE4  38E3060C  addi        r7, r3, 0x060C
-81300BE8  387F0040  addi        r3, r31, 64
-81300BEC  389F0020  addi        r4, r31, 32
-81300BF0  38A00020  li          r5, 32
-81300BF4  38C02440  li          r6, 0x2440
-81300BF8  48067201  bl          DVDReadAbsAsyncForBS 
-81300BFC  38000009  li          r0, 9
-81300C00  900D82A8  stw         r0, -0x7D58 (r13)
-81300C04  48000310  b           0x81300F14 
+            DVDReadAbsAsyncForBS ( r31+64, r31+32, 32, 0x2440, 0x8130060C );
+            DvdState = 9;
+            break;
 
         case 9:
-81300C08  387F0040  addi        r3, r31, 64
-81300C0C  4BFFFCA5  bl          0x813008B0 
-81300C10  2C030000  cmpwi       r3, 0
-81300C14  41820300  beq-        0x81300F14 
-81300C18  809F0034  lwz         r4, 52 (r31)
-81300C1C  387D0034  addi        r3, r29, 52
-81300C20  4CC63182  crclr       6
-81300C24  4BFFF975  bl          0x81300598 
-81300C28  809F0030  lwz         r4, 48 (r31)
-81300C2C  387D0054  addi        r3, r29, 84
-81300C30  4CC63182  crclr       6
-81300C34  4BFFF965  bl          0x81300598 
-81300C38  3800000A  li          r0, 10
-81300C3C  900D82A8  stw         r0, -0x7D58 (r13)
+            if ( 0x813008B0 (r31+64) )
+            {
+                0x81300598 ( r29+52, [r31+52] );
+                0x81300598 ( r29+84, [r31+48] );
+                DvdState = 10;
+            }
+            else break;
 
         case 10:
-81300C40  809F0034  lwz         r4, 52 (r31)
-81300C44  3C608130  lis         r3, 0x8130
-81300C48  38E3060C  addi        r7, r3, 0x060C
-81300C4C  3804001F  addi        r0, r4, 31
-81300C50  387F0040  addi        r3, r31, 64
-81300C54  54050034  rlwinm      r5, r0, 0, 0, 26            mask:0xFFFFFFE0
-81300C58  3C808120  lis         r4, 0x8120
-81300C5C  38C02460  li          r6, 0x2460
-81300C60  48067199  bl          DVDReadAbsAsyncForBS 
-81300C64  3800000B  li          r0, 11
-81300C68  900D82A8  stw         r0, -0x7D58 (r13)
-81300C6C  480002A8  b           0x81300F14 
+            DVDReadAbsAsyncForBS ( r31+64, 0x81200000, ([r31+52] + 31) & ~0x1f, 0x2460, 0x8130060C );
+            DvdState = 11;
+            break;
 
         case 11:
-81300C70  387F0040  addi        r3, r31, 64
-81300C74  4BFFFC3D  bl          0x813008B0 
-81300C78  2C030000  cmpwi       r3, 0
-81300C7C  41820298  beq-        0x81300F14 
-81300C80  819F0030  lwz         r12, 48 (r31)
-81300C84  386D82AC  subi        r3, r13, 0x7D54
-81300C88  388D82B0  subi        r4, r13, 0x7D50
-81300C8C  38AD82B4  subi        r5, r13, 0x7D4C
-81300C90  7D8803A6  mtlr        r12
-81300C94  4E800021  blrl         
-81300C98  3C608136  lis         r3, 0x8136
-81300C9C  818D82AC  lwz         r12, -0x7D54 (r13)
-81300CA0  3863D924  subi        r3, r3, 0x26DC
-81300CA4  7D8803A6  mtlr        r12
-81300CA8  4E800021  blrl         
-81300CAC  387D0074  addi        r3, r29, 116
-81300CB0  4CC63182  crclr       6
-81300CB4  4BFFF8E5  bl          0x81300598 
-81300CB8  3800000C  li          r0, 12
-81300CBC  900D82A8  stw         r0, -0x7D58 (r13)
+            if ( 0x813008B0 (r31+64) )
+            {
+                [r31+48] ( &var_7D54, &var_7D50, &var_7D4C );
+                [var_7D54] ( 0x8135D924 );
+                0x81300598 ( r29+116 );
+                DvdState = 12;
+            }
+            else break;
 
         case 12:
 81300CC0  818D82B0  lwz         r12, -0x7D50 (r13)
@@ -529,13 +479,8 @@ int DVDStep (void)
 81300D70  480001A4  b           0x81300F14 
 
         case 13:
-81300D74  387F0040  addi        r3, r31, 64
-81300D78  4BFFFB39  bl          0x813008B0 
-81300D7C  2C030000  cmpwi       r3, 0
-81300D80  41820194  beq-        0x81300F14 
-81300D84  3800000C  li          r0, 12
-81300D88  900D82A8  stw         r0, -0x7D58 (r13)
-81300D8C  48000188  b           0x81300F14 
+            if ( 0x813008B0 (r31+64) ) DvdState = 12;
+            break;
 
         case 14:
 81300D90  48064B29  bl          __DVDFSInit 
@@ -587,73 +532,52 @@ int DVDStep (void)
 81300E48  480000CC  b           0x81300F14 
 
         case 15:
-81300E4C  387F0040  addi        r3, r31, 64
-81300E50  4BFFFA61  bl          0x813008B0 
-81300E54  2C030000  cmpwi       r3, 0
-81300E58  418200BC  beq-        0x81300F14 
-81300E5C  38600001  li          r3, 1
-81300E60  38000010  li          r0, 16
-81300E64  906D82D0  stw         r3, -0x7D30 (r13)
-81300E68  3C608130  lis         r3, 0x8130
-81300E6C  900D82A8  stw         r0, -0x7D58 (r13)
-81300E70  386305E8  addi        r3, r3, 0x05E8
-81300E74  480643FD  bl          DVDLowWaitCoverClose 
-81300E78  4800009C  b           0x81300F14 
+            if ( 0x813008B0(r31+64) )
+            {
+                var_7D30 = 1;
+                DvdState = 16;
+                DVDLowWaitCoverClose (0x813005E8);
+            }
+            break;
 
         case 16:
             break;
 
         case 17:
-81300E7C  38600000  li          r3, 0
-81300E80  38000002  li          r0, 2
-81300E84  906D82D0  stw         r3, -0x7D30 (r13)
-81300E88  900D82A8  stw         r0, -0x7D58 (r13)
-81300E8C  48000088  b           0x81300F14 
+            var_7D30 = 0;
+            DvdState = 2;
+            break;
 
         case 18:
         case 19:
         case 24:
-81300E90  38600000  li          r3, 0
-81300E94  480648DD  bl          0x81365770 
-81300E98  38000000  li          r0, 0
-81300E9C  900D82D0  stw         r0, -0x7D30 (r13)
-81300EA0  387F0040  addi        r3, r31, 64
-81300EA4  4BFFFA0D  bl          0x813008B0 
-81300EA8  4800006C  b           0x81300F14 
+            0x81365770 (0);
+            var_7D30 = 0;
+            0x813008B0 (r31+64);
+            break;
 
         case 20:
-81300EAC  38000000  li          r0, 0
-81300EB0  3C608130  lis         r3, 0x8130
-81300EB4  900D82D0  stw         r0, -0x7D30 (r13)
-81300EB8  3883060C  addi        r4, r3, 0x060C
-81300EBC  387F0040  addi        r3, r31, 64
-81300EC0  48067325  bl          0x813681E4 
-81300EC4  38000015  li          r0, 21
-81300EC8  900D82A8  stw         r0, -0x7D58 (r13)
+            var_7D30 = 0;
+            0x813681E4 ( r31+64, 0x8130060C );
+            DvdState = 21;
 
         case 21:
         case 22:
-81300ECC  387F0040  addi        r3, r31, 64
-81300ED0  4BFFF9E1  bl          0x813008B0 
-81300ED4  48000040  b           0x81300F14 
+            0x813008B0 (r31+64);
+            break;
 
         case 23:
-81300ED8  38000000  li          r0, 0
-81300EDC  900D82D0  stw         r0, -0x7D30 (r13)
-81300EE0  48000034  b           0x81300F14 
+            var_7D30 = 0;
+            break;
 
         case 25:
-81300EE4  387F0040  addi        r3, r31, 64
-81300EE8  4BFFF9C9  bl          0x813008B0 
-81300EEC  2C030000  cmpwi       r3, 0
-81300EF0  41820024  beq-        0x81300F14 
-81300EF4  38000003  li          r0, 3
-81300EF8  900D82A8  stw         r0, -0x7D58 (r13)
-81300EFC  48000018  b           0x81300F14 
+            if ( 0x813008B0 (r31+64) ) DvdState = 3;
+            break;
 
         default: OSHalt ( "BS2 ERROR >>> UNKNOWN STATE" );
     }
 
+0F14:
     OSRestoreInterrupts (level);
     if ( 0x813657E0 () == 1 ) return 19;
     else return DvdState; 

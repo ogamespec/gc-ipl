@@ -1,0 +1,46 @@
+        case 12:
+81300CC0  818D82B0  lwz         r12, -0x7D50 (r13)
+81300CC4  3861004C  addi        r3, r1, 76
+81300CC8  38810048  addi        r4, r1, 72
+81300CCC  38A10044  addi        r5, r1, 68
+81300CD0  7D8803A6  mtlr        r12
+81300CD4  4E800021  blrl         
+81300CD8  2C030000  cmpwi       r3, 0
+81300CDC  41820074  beq-        0x81300D50 
+81300CE0  8081004C  lwz         r4, 76 (r1)
+81300CE4  387D008C  addi        r3, r29, 140
+81300CE8  80A10048  lwz         r5, 72 (r1)
+81300CEC  4CC63182  crclr       6
+81300CF0  80C10044  lwz         r6, 68 (r1)
+81300CF4  4BFFF8A5  bl          0x81300598 
+81300CF8  4805E559  bl          OSDisableInterrupts 
+81300CFC  3CC08130  lis         r6, 0x8130
+81300D00  8081004C  lwz         r4, 76 (r1)
+81300D04  38E6060C  addi        r7, r6, 0x060C
+81300D08  80A10048  lwz         r5, 72 (r1)
+81300D0C  7C7D1B78  or          r29, r3, r3
+81300D10  80C10044  lwz         r6, 68 (r1)
+81300D14  387F0040  addi        r3, r31, 64
+81300D18  480670E1  bl          DVDReadAbsAsyncForBS 
+81300D1C  806D82B8  lwz         r3, -0x7D48 (r13)
+81300D20  80030000  lwz         r0, 0 (r3)
+81300D24  28000000  cmplwi      r0, 0
+81300D28  41820014  beq-        0x81300D3C 
+81300D2C  38600001  li          r3, 1
+81300D30  80010048  lwz         r0, 72 (r1)
+81300D34  906D82C4  stw         r3, -0x7D3C (r13)
+81300D38  900D82C0  stw         r0, -0x7D40 (r13)
+81300D3C  7FA3EB78  or          r3, r29, r29
+81300D40  4805E539  bl          OSRestoreInterrupts 
+81300D44  3800000D  li          r0, 13
+81300D48  900D82A8  stw         r0, -0x7D58 (r13)
+81300D4C  480001C8  b           0x81300F14 
+81300D50  4BFFF999  bl          0x813006E8 
+81300D54  2C030000  cmpwi       r3, 0
+81300D58  40820010  bne-        0x81300D68 
+81300D5C  38000014  li          r0, 20
+81300D60  900D82A8  stw         r0, -0x7D58 (r13)
+81300D64  480001B0  b           0x81300F14 
+81300D68  3800000E  li          r0, 14
+81300D6C  900D82A8  stw         r0, -0x7D58 (r13)
+81300D70  480001A4  b           0x81300F14 

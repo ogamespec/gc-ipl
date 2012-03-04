@@ -6,6 +6,7 @@
 u32 var_76f8;   // unused ?
 BOOL CounterBiasModified;       // 7CE4
 BOOL SramFlag008Cleared;      // 7CE0
+int LastDvdStep;    // 7CD4
 
 double zero = 0.0;       // 7D60
 
@@ -15,6 +16,9 @@ void BS2Init (void);
 void BS2Main (void);
 void CheckSram (void);
 void SetTimeBaseCounter (void);
+void InitDVDLoader (void);
+
+int DVDStep (void);
 
 BOOL AD16Init (void);
 BOOL AD16WriteReg (u32 value);
@@ -119,7 +123,7 @@ void main()
     __OSBusClock = 162000000;
     __OSCoreClock = 486000000;
     SetTimeBaseCounter ();
-    //sub_813020C8 ();
+    InitDVDLoader ();
     PADSetSpec (PAD_SPEC_5);
     PADInit ();
     AD16WriteReg (0x0C000000);
@@ -179,10 +183,7 @@ void SetTimeBaseCounter (void)
     __OSUnlockSram (FALSE);
 }
 
-/*
-sub_813020C8 (void)
+void InitDVDLoader (void)
 {
-    var_7CD4 = 0x81300968 ();
+    LastDvdStep = DVDStep ();
 }
-
-*/
