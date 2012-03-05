@@ -4,6 +4,10 @@ int DvdState;   // 7D58
 
 int DVDStep (void);
 
+void dprintf (char *fmt, ...)
+{
+}
+
 int DVDStep (void)
 {
     BOOL level;
@@ -159,8 +163,8 @@ int DVDStep (void)
         case 9:
             if ( 0x813008B0 (r31+64) )
             {
-                0x81300598 ( r29+52, [r31+52] );
-                0x81300598 ( r29+84, [r31+48] );
+                dprintf ( "  appLoaderLength ...... 0x%x\n", [r31+52] );
+                dprintf ( "  appLoaderFunc1  ...... 0x%x\n", [r31+48] );
                 DvdState = 10;
             }
             else break;
@@ -174,8 +178,8 @@ int DVDStep (void)
             if ( 0x813008B0 (r31+64) )
             {
                 [r31+48] ( &var_7D54, &var_7D50, &var_7D4C );
-                [var_7D54] ( 0x8135D924 );
-                0x81300598 ( r29+116 );
+                [var_7D54] ( OSReport );
+                dprintf ( "\nApploader Initialized\n" );
                 DvdState = 12;
             }
             else break;

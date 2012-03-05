@@ -4,9 +4,9 @@
 #include "ossram.h"
 
 u32 var_76f8;   // unused ?
-BOOL CounterBiasModified;       // 7CE4
+BOOL CounterBiasModified;
 BOOL SramFlag008Cleared;      // 7CE0
-int LastDvdStep;    // 7CD4
+int LastDvdStep;
 
 double zero = 0.0;       // 7D60
 

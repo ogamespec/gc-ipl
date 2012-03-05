@@ -1,24 +1,7 @@
 
-81300598  9421FF90  stwu        r1, -112 (r1)
-8130059C  40860024  bne-        cr1, 0x813005C0 
-813005A0  D8210028  stfd        fr1, 40 (r1)
-813005A4  D8410030  stfd        fr2, 48 (r1)
-813005A8  D8610038  stfd        fr3, 56 (r1)
-813005AC  D8810040  stfd        fr4, 64 (r1)
-813005B0  D8A10048  stfd        fr5, 72 (r1)
-813005B4  D8C10050  stfd        fr6, 80 (r1)
-813005B8  D8E10058  stfd        fr7, 88 (r1)
-813005BC  D9010060  stfd        fr8, 96 (r1)
-813005C0  90610008  stw         r3, 8 (r1)
-813005C4  9081000C  stw         r4, 12 (r1)
-813005C8  90A10010  stw         r5, 16 (r1)
-813005CC  90C10014  stw         r6, 20 (r1)
-813005D0  90E10018  stw         r7, 24 (r1)
-813005D4  9101001C  stw         r8, 28 (r1)
-813005D8  91210020  stw         r9, 32 (r1)
-813005DC  91410024  stw         r10, 36 (r1)
-813005E0  38210070  addi        r1, r1, 112
-813005E4  4E800020  blr
+81300598  
+    void dprintf (char *fmt, ...);
+
 
 813005E8  3C60CC00  lis         r3, 0xCC00
 813005EC  38000000  li          r0, 0
@@ -410,8 +393,8 @@ int DVDStep (void)
         case 9:
             if ( 0x813008B0 (r31+64) )
             {
-                0x81300598 ( r29+52, [r31+52] );
-                0x81300598 ( r29+84, [r31+48] );
+                dprintf ( "  appLoaderLength ...... 0x%x\n", [r31+52] );
+                dprintf ( "  appLoaderFunc1  ...... 0x%x\n", [r31+48] );
                 DvdState = 10;
             }
             else break;
@@ -425,8 +408,8 @@ int DVDStep (void)
             if ( 0x813008B0 (r31+64) )
             {
                 [r31+48] ( &var_7D54, &var_7D50, &var_7D4C );
-                [var_7D54] ( 0x8135D924 );
-                0x81300598 ( r29+116 );
+                [var_7D54] ( OSReport );
+                dprintf ( "\nApploader Initialized\n" );
                 DvdState = 12;
             }
             else break;
@@ -445,7 +428,7 @@ int DVDStep (void)
 81300CE8  80A10048  lwz         r5, 72 (r1)
 81300CEC  4CC63182  crclr       6
 81300CF0  80C10044  lwz         r6, 68 (r1)
-81300CF4  4BFFF8A5  bl          0x81300598 
+81300CF4  4BFFF8A5  bl          0x81300598     // "Addr [0x%x] length [0x%x] offset [0x%x]\n"
 81300CF8  4805E559  bl          OSDisableInterrupts 
 81300CFC  3CC08130  lis         r6, 0x8130
 81300D00  8081004C  lwz         r4, 76 (r1)
@@ -495,16 +478,16 @@ int DVDStep (void)
 81300DB4  40820018  bne-        0x81300DCC 
 81300DB8  387D00C8  addi        r3, r29, 200
 81300DBC  4CC63182  crclr       6
-81300DC0  38BD00D4  addi        r5, r29, 212
+81300DC0  38BD00D4  addi        r5, r29, 212    // "BS2 ERROR >>> Banner buffer address is not set"
 81300DC4  3880040E  li          r4, 0x040E
-81300DC8  4805CBDD  bl          OSPanic 
+81300DC8  4805CBDD  bl          OSPanic        // 
 81300DCC  806D82CC  lwz         r3, -0x7D34 (r13)
 81300DD0  8001003C  lwz         r0, 60 (r1)
 81300DD4  7C030040  cmplw       r3, r0
 81300DD8  4080001C  bge-        0x81300DF4 
 81300DDC  80CD82CC  lwz         r6, -0x7D34 (r13)
 81300DE0  387D00C8  addi        r3, r29, 200
-81300DE4  38BD0104  addi        r5, r29, 0x0104
+81300DE4  38BD0104  addi        r5, r29, 0x0104 // "BS2 ERROR >>> Banner buffer length (0x%08x) is not enough"
 81300DE8  4CC63182  crclr       6
 81300DEC  38800411  li          r4, 0x0411
 81300DF0  4805CBB5  bl          OSPanic 
