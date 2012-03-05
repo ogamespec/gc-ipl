@@ -1,11 +1,45 @@
+        DEMOInit (1)
+            HeapAlloc (1)
+                OSAllocFromHeap (1)
+                OSPanic (4)
+            HeapAlloc (2) ...
+            VIGetTvFormat (2)
+            OSPanic (5)
+            VIConfigure (1)
+            HeapAlloc (3) ...
+            GXInit (1)
+            __DEMOInitGX (1)
+                GXSetViewport (1)
+                GXSetDispCopySrc (1)
+                GXSetDispCopyDst (1)
+                GXSetCopyFilter (1)
+                GXSetPixelFmt (1)
+                0x81376CA0 (1)
+                0x81379B7C (1)
+                GXSetCopyClamp (1)
+                GXSetPixelFmt (2)
+                0x81376CA0 (2)
+                GXSetScissor (1)
+            GXSetCopyClear (1)
+            GXCopyDisp (1)
+            GXCopyDisp (2)
+            GXCopyDisp (3)
+            GXCopyDisp (4)
+            GXSetDispCopyGamma (1)
+            VISetBlack (1)
+            VISetNextFrameBuffer (1)
+            VIFlush (1)
+            VIWaitForRetrace (1)
+
+DEMOInit
 813012D0  7C0802A6  mflr        r0
 813012D4  90010004  stw         r0, 4 (r1)
 813012D8  9421FFD0  stwu        r1, -48 (r1)
 813012DC  93E1002C  stw         r31, 44 (r1)
-813012E0  7C9F2378  or          r31, r4, r4
+813012E0  7C9F2378  mr          r31, r4
 813012E4  93C10028  stw         r30, 40 (r1)
 813012E8  93A10024  stw         r29, 36 (r1)
-813012EC  7C7D1B78  or          r29, r3, r3
+813012EC  7C7D1B78  mr          r29, r3
 813012F0  A0840004  lhz         r4, 4 (r4)
 813012F4  A01F0008  lhz         r0, 8 (r31)
 813012F8  3864000F  addi        r3, r4, 15
@@ -13,10 +47,10 @@
 81301300  7C0301D6  mullw       r0, r3, r0
 81301304  541E083C  rlwinm      r30, r0, 1, 0, 30           mask:0xFFFFFFFE
 81301308  387E0000  addi        r3, r30, 0
-8130130C  48006B35  bl          0x81307E40 
+8130130C  48006B35  bl          HeapAlloc 
 81301310  906D82F0  stw         r3, -0x7D10 (r13)
-81301314  7FC3F378  or          r3, r30, r30
-81301318  48006B29  bl          0x81307E40 
+81301314  7FC3F378  mr          r3, r30
+81301318  48006B29  bl          HeapAlloc 
 8130131C  906D82F4  stw         r3, -0x7D0C (r13)
 81301320  281F0000  cmplwi      r31, 0
 81301324  800D82F4  lwz         r0, -0x7D0C (r13)
@@ -24,7 +58,7 @@
 8130132C  4182000C  beq-        0x81301338 
 81301330  93ED82FC  stw         r31, -0x7D04 (r13)
 81301334  48000074  b           0x813013A8 
-81301338  480691C1  bl          0x8136A4F8 
+81301338  480691C1  bl          VIGetTvFormat 
 8130133C  2C030001  cmpwi       r3, 1
 81301340  41820030  beq-        0x81301370 
 81301344  40800010  bge-        0x81301354 
@@ -52,19 +86,19 @@
 8130139C  386D800C  subi        r3, r13, 0x7FF4
 813013A0  38800066  li          r4, 102
 813013A4  4805C601  bl          OSPanic 
-813013A8  7FE3FB78  or          r3, r31, r31
-813013AC  48068709  bl          0x81369AB4 
+813013A8  7FE3FB78  mr          r3, r31
+813013AC  48068709  bl          VIConfigure 
 813013B0  381D001F  addi        r0, r29, 31
 813013B4  541E0034  rlwinm      r30, r0, 0, 0, 26           mask:0xFFFFFFE0
 813013B8  387E0000  addi        r3, r30, 0
-813013BC  48006A85  bl          0x81307E40 
+813013BC  48006A85  bl          HeapAlloc 
 813013C0  906D8300  stw         r3, -0x7D00 (r13)
-813013C4  7FC4F378  or          r4, r30, r30
+813013C4  7FC4F378  mr          r4, r30
 813013C8  806D8300  lwz         r3, -0x7D00 (r13)
-813013CC  480720FD  bl          0x813734C8 
+813013CC  480720FD  bl          GXInit 
 813013D0  906D8304  stw         r3, -0x7CFC (r13)
-813013D4  7FE3FB78  or          r3, r31, r31
-813013D8  4BFFFDB9  bl          0x81301190 
+813013D4  7FE3FB78  mr          r3, r31
+813013D8  4BFFFDB9  bl          __DEMOInitGX 
 813013DC  80028048  lwz         r0, -0x7FB8 (r2)
 813013E0  3C800100  lis         r4, 0x0100
 813013E4  38610014  addi        r3, r1, 20

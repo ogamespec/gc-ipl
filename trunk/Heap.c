@@ -1,4 +1,4 @@
-// Originall located in gBase.c (sight from ASSERT macro)
+// Originally located at gBase.c (sight from ASSERT macro)
 
 #include <dolphin.h>
 
