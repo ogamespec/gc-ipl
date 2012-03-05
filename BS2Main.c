@@ -6,19 +6,13 @@ void BS2Main (void)
 }
 
 /*
-    r3 = 0x814AE750
-    r4 = 256
-
     DSPInit ();
     ARQInit ();
 
-    r31 = r0 = 81380FD0
-
     InitHeap ();
-    0x813012D0 ( 0x80000, r31 );
-    0x81307E40 ( 0x10000 );
+    DEMOInit ( 0x80000, 0x81380FD0 );
 
-    0x8135B0C0 (); // ???
+    0x8135B0C0 ( HeapAlloc ( 0x100000 ), 0x100000, 0x800000 );
 
     0x8130B84C ();
     0x8130BCB4 ();
