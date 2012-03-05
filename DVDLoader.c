@@ -1,11 +1,15 @@
+// Original name "BS2Mach.c" (wtf is Mach??)
+
 #include <dolphin.h>
 
 int DvdState;   // 7D58
 
 int DVDStep (void);
 
+// Debug printf
 void dprintf (char *fmt, ...)
 {
+    // empty.
 }
 
 int DVDStep (void)

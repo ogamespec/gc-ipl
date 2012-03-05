@@ -1,0 +1,6 @@
+8130BDA0  808D83C8  lwz         r4, -0x7C38 (r13)
+8130BDA4  5460103A  rlwinm      r0, r3, 2, 0, 29            mask:0xFFFFFFFC
+8130BDA8  7C640214  add         r3, r4, r0
+8130BDAC  80030004  lwz         r0, 4 (r3)
+8130BDB0  7C640214  add         r3, r4, r0
+8130BDB4  4E800020  blr
