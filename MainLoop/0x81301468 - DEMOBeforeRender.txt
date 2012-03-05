@@ -1,3 +1,18 @@
+        0x81301468 (1)
+            OSGetTime (1)
+            OSPanic (8)
+            VIGetNextField (1)
+            GXSetViewportJitter (1)
+            GXSetViewport (2)
+            GXInvalidateVtxCache (1)
+            GXInvalidateTexAll (1)
+            GXSetScissor (2)
+            GXSetScissorBoxOffset (1)
+
+var_7CF4 = OSGetTime ();
+r5 = var_7D04
+r0 = (u8)var_7D04+24
+
 81301468  7C0802A6  mflr        r0
 8130146C  90010004  stw         r0, 4 (r1)
 81301470  9421FFE0  stwu        r1, -32 (r1)
@@ -9,6 +24,11 @@
 81301488  88050018  lbz         r0, 24 (r5)
 8130148C  28000000  cmplwi      r0, 0
 81301490  4182006C  beq-        0x813014FC 
+
+    if ( (u8)var_7D04+24 )
+    {
+    }
+
 81301494  3C608138  lis         r3, 0x8138
 81301498  4CC63182  crclr       6
 8130149C  38A31030  addi        r5, r3, 0x1030
@@ -16,7 +36,7 @@
 813014A4  388000C6  li          r4, 198
 813014A8  4805C4FD  bl          OSPanic 
 813014AC  83ED82FC  lwz         r31, -0x7D04 (r13)
-813014B0  48068F55  bl          0x8136A404 
+813014B0  48068F55  bl          VIGetNextField 
 813014B4  A0BF0004  lhz         r5, 4 (r31)
 813014B8  3C804330  lis         r4, 0x4330
 813014BC  A01F0008  lhz         r0, 8 (r31)
@@ -35,6 +55,11 @@
 813014F0  EC802028  fsubs       fr4, fr0, fr4
 813014F4  48078AE5  bl          GXSetViewportJitter 
 813014F8  48000054  b           0x8130154C 
+
+    else
+    {
+    }
+
 813014FC  A0850004  lhz         r4, 4 (r5)
 81301500  3C604330  lis         r3, 0x4330
 81301504  A0050008  lhz         r0, 8 (r5)
@@ -54,7 +79,16 @@
 8130153C  EC002028  fsubs       fr0, fr0, fr4
 81301540  EC67182A  fadds       fr3, fr7, fr3
 81301544  EC87002A  fadds       fr4, fr7, fr0
-81301548  48078BAD  bl          0x8137A0F4 
+81301548  48078BAD  bl          GXSetViewport 
+
+    GXInvalidateVtxCache ();
+    GXInvalidateTexAll ();
+    if ( (u8)var_7D04+25 && (u16)(var_7D04+8) > 440 )
+    {
+        GXSetScissor ( 0, 0, r4+4, r4+6 );
+        GXSetScissorBoxOffset ( 0, 0 );
+    }
+
 8130154C  48074A55  bl          GXInvalidateVtxCache 
 81301550  48076DED  bl          GXInvalidateTexAll 
 81301554  808D82FC  lwz         r4, -0x7D04 (r13)
@@ -72,6 +106,7 @@
 81301584  38600000  li          r3, 0
 81301588  38800000  li          r4, 0
 8130158C  48078C3D  bl          GXSetScissorBoxOffset 
+
 81301590  80010024  lwz         r0, 36 (r1)
 81301594  83E1001C  lwz         r31, 28 (r1)
 81301598  38210020  addi        r1, r1, 32

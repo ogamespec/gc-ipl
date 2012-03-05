@@ -1,7 +1,7 @@
 813022F4  7C0802A6  mflr        r0
 813022F8  90010004  stw         r0, 4 (r1)
 813022FC  9421FFF8  stwu        r1, -8 (r1)
-81302300  4BFFE669  bl          0x81300968 
+81302300  4BFFE669  bl          DVDStep 
 81302304  906D832C  stw         r3, -0x7CD4 (r13)
 81302308  480672E5  bl          VIWaitForRetrace 
 8130230C  800D832C  lwz         r0, -0x7CD4 (r13)
