@@ -1,4 +1,6 @@
 
+static  GXRenderModeObj RenderMode; // 81380FD0
+
 void BS2Main (void);
 
 void BS2Main (void)
@@ -10,7 +12,7 @@ void BS2Main (void)
     ARQInit ();
 
     InitHeap ();
-    DEMOInit ( 0x80000, 0x81380FD0 );
+    DEMOInit ( 0x80000, &RenderMode );
 
     0x8135B0C0 ( HeapAlloc ( 0x100000 ), 0x100000, 0x800000 );
 
@@ -23,7 +25,7 @@ void BS2Main (void)
 
     0x8136F318 (0); // ???
     0x8131C5C4 ();
-    0x81302D2C ();
+    DEMOPadInit ();
     0x81308208 (0);
     0x81307B0C (12);
     0x81307EB8 ();
@@ -35,9 +37,9 @@ void BS2Main (void)
     Main Loop:
 
     while (1) {
-        0x81302B24 ();
-        0x813020C8 ();
-        0x81301468 ();
+        DEMOPadRead ();
+        InitDVDLoader ();
+        DEMOBeforeRender ();
         0x8130903C ();
         0x81302DF0 ();
         0x81302FA0 ();
@@ -45,8 +47,8 @@ void BS2Main (void)
         0x81301100 ();
         0x8130BE78 ();
         0x813022C4 ();
-        0x81301604 ();
-        0x813015A4 ();  // HUGE !
+        DEMODoneRender ();
+        0x813015A4 ();
         0x81301100 ();
         0x8130BE78 ();
         0x813022C4 ();
