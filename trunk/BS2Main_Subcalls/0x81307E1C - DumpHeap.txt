@@ -1,3 +1,8 @@
+void DumpHeap (void)
+{
+    OSDumpHeap ( BS2Heap );
+}
+
 81307E1C  7C0802A6  mflr        r0
 81307E20  90010004  stw         r0, 4 (r1)
 81307E24  9421FFF8  stwu        r1, -8 (r1)

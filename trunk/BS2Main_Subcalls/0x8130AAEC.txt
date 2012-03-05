@@ -1,0 +1,10 @@
+8130AAEC  38A00000  li          r5, 0
+8130AAF0  B0A30004  sth         r5, 4 (r3)
+8130AAF4  38800014  li          r4, 20
+8130AAF8  380000FF  li          r0, 255
+8130AAFC  B0A30000  sth         r5, 0 (r3)
+8130AB00  B0830002  sth         r4, 2 (r3)
+8130AB04  98030009  stb         r0, 9 (r3)
+8130AB08  B0A3000A  sth         r5, 10 (r3)
+8130AB0C  90A3000C  stw         r5, 12 (r3)
+8130AB10  4E800020  blr
