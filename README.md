@@ -40,7 +40,7 @@ Important Note: Bootrom is encrypted itself. Decryption is done by MX chip, duri
 
 Also Bootrom contains two sets of raster fonts. One for ANSI charset and another for SJIS:<br>
 <img src='http://gcdev.narod.ru/font_00.jpg'> <img src='http://gcdev.narod.ru/font_03.jpg'><br>
-These fonts are rarely used by some games. Font data is <b>not</b> encrypted.<br>
+These fonts are rarely used by some games. Font data is <b>not</b> encrypted (BS1 disables bootrom scrambler after BS2 was copied in RAM, so Font reading is actually done over 0x00000000 XOR stream. Same thing applies to first 0x100 bytes of bootrom with Copyright strings)<br> 
 <br>
 When IPL starts, following sequence appear :<br>
 <br>
