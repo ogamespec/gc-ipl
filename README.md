@@ -29,7 +29,7 @@ Bootrom is located in special chip, designed by Macronix Ltd., and placed near F
 
 Bootrom size is 2 MB.<br>
 <br>
-First logical part of bootrom (reset vector) called Bootstrap 1 (BS1). This small procedure is written on assembly. It prepare Gamecube hardware, checks memory and load second logical part, known as Bootstrap 2 (BS2) or IPL (Intial Program Loader).<br>
+First logical part of bootrom (reset vector) called Bootstrap 1 (BS1). This small procedure is written on assembly. It prepares Gamecube hardware, checks memory and load second logical part, known as Bootstrap 2 (BS2) or IPL (Intial Program Loader).<br>
 <br>
 IPL is written on C. It compiled as DOL executable, by using early version Dolphin SDK as system API.<br>
 Code entrypoint for start routine is made to 0x81300000 location, by link script.<br>
