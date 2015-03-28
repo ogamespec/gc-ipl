@@ -7,7 +7,7 @@
   * Write own bootrom, based on IPL reversing
   * Use bootrom in gamecube emulators to have fun :-)
 
-<b>Toolchain:</b>
+<b>Toolchain (mostly official):</b>
   * `CodeWarrior` IDE for Nintendo `GameCube`
   * Dolphin SDK
   * Dolwin debugger
