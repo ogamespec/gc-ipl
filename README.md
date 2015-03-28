@@ -31,7 +31,7 @@ Bootrom size is 2 MB.<br>
 <br>
 First logical part of bootrom (reset vector) called Bootstrap 1 (BS1). This small procedure is written on assembly. It prepares Gamecube hardware, checks memory and load second logical part, known as Bootstrap 2 (BS2) or IPL (Intial Program Loader).<br>
 <br>
-IPL is written on C. It compiled as DOL executable, by using early version Dolphin SDK as system API.<br>
+IPL is written on C. It's compiled as DOL executable, by using early version Dolphin SDK as system API.<br>
 Code entrypoint for start routine is made to 0x81300000 location, by link script.<br>
 <br>
 Important Note: Bootrom is encrypted itself. Decryption is done by MX chip, during block reading of bootrom data. Encryption algorithm was reversed by segher : <a href='Descrambler.md'>Descrambler</a>
