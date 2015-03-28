@@ -3,7 +3,7 @@
 <b>!!! For educational purposes only !!!</b>
 
 <b>Project Goals:</b>
-  * Reverse engineering of retail `GameCube` bootrom
+  * Reverse engineering of retail `GameCube` bootrom (USA / NTSC version was used as reference)
   * Write own bootrom, based on IPL reversing
   * Use bootrom in gamecube emulators to have fun :-)
 
