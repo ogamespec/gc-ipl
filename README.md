@@ -22,7 +22,7 @@
   * IPL menus
   * Utility to merge all pieces in single binary ROM file
 
-<b>Bootrom details:</b>
+<b>Gamecube Bootrom details:</b>
 
 Bootrom is located in special chip, designed by Macronix Ltd., and placed near Flipper IC : <br>
 <img src='http://gcdev.narod.ru/bootrom.jpg'>
