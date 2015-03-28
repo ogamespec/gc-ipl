@@ -36,7 +36,7 @@ Code entrypoint for start routine is made to 0x81300000 location, by link script
 <br>
 Important Note: Bootrom is encrypted itself. Decryption is done by MX chip, during block reading of bootrom data. Encryption algorithm was reversed by segher : <a href='Descrambler.md'>Descrambler</a>
 
-Also Bootrom contain two sets of raster fonts. One for ANSI charset and another for SJIS:<br>
+Also Bootrom contains two sets of raster fonts. One for ANSI charset and another for SJIS:<br>
 <img src='http://gcdev.narod.ru/font_00.jpg'> <img src='http://gcdev.narod.ru/font_03.jpg'><br>
 These fonts are rarely used by some games. Font data is <b>not</b> encrypted.<br>
 <br>
