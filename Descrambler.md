@@ -1,3 +1,4 @@
+EXI Descrambler.
 
 ```
 // bootrom descrambler reversed by segher
