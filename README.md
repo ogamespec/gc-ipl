@@ -27,6 +27,8 @@
 Bootrom is located in special chip, designed by Macronix Ltd., and placed near Flipper IC : <br>
 <img src='http://gcdev.narod.ru/bootrom.jpg'>
 
+Same chip shares non-volatile memory (SRAM) and real-time clock (RTC).
+
 Bootrom size is 2 MB.<br>
 <br>
 First logical part of bootrom (reset vector) called Bootstrap 1 (BS1). This small procedure is written on assembly and started from 0xfff00100 address. It prepares Gamecube hardware, checks memory and load second logical part, known as Bootstrap 2 (BS2) or IPL (Intial Program Loader).<br>
