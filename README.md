@@ -36,7 +36,7 @@ Code entrypoint for start routine is made to 0x81300000 location, by link script
 
 Almost 50% of IPL binary payload is occupied by Dolphin SDK library calls.
 
-Important Note: Bootrom is encrypted itself. Decryption is done by MX chip, during block reading of bootrom data. Encryption algorithm was reversed by segher : <a href='wiki/Descrambler.md'>Descrambler</a>
+Important Note: Bootrom is encrypted itself. Decryption is done by MX chip, during block reading of bootrom data. Encryption algorithm was reversed by segher : <a href='../wiki/Descrambler.md'>Descrambler</a>
 
 Also Bootrom contains two sets of raster fonts. One for ANSI charset and another for SJIS:<br>
 <img src='http://gcdev.narod.ru/font_00.jpg'> <img src='http://gcdev.narod.ru/font_03.jpg'><br>
