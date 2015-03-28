@@ -33,6 +33,9 @@ First logical part of bootrom (reset vector) called Bootstrap 1 (BS1). This smal
 <br>
 IPL is written on C. It's compiled as DOL executable, by using early version Dolphin SDK as system API.<br>
 Code entrypoint for start routine is made to 0x81300000 location, by link script.<br>
+
+Almost 50% of IPL binary payload is occupied by Dolphin SDK library calls.
+
 <br>
 Important Note: Bootrom is encrypted itself. Decryption is done by MX chip, during block reading of bootrom data. Encryption algorithm was reversed by segher : <a href='Descrambler.md'>Descrambler</a>
 
