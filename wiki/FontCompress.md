@@ -1,6 +1,6 @@
-## Data format ##
+## BootROM Fonts Data format
 
-First 16 bytes are 'Yay0' header :
+First 16 bytes are 'Yay0' header:
 
 |offset |size|     description|
 |:------|:---|:---------------|
@@ -42,8 +42,6 @@ next 12-bits are 'offset' modifier.<br>
 </code></pre>
 <blockquote>(assuming, that current offset is in destination buffer)<br>
 </blockquote></li><li>copy 'count' bytes from 'current offset' - 'offset'.</li></ol>
-
-<img src='http://ogamespec.com/imgstore/whc4f4b763bb0d03.jpg' />
 
 <h2>Reversing of decoding routine</h2>
 

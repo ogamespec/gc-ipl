@@ -1,6 +1,6 @@
-EXI Descrambler.
+# EXI Descrambler.
 
-```
+```c++
 // bootrom descrambler reversed by segher
 // Copyright 2008 Segher Boessenkool <segher@kernel.crashing.org>
 void Descrambler(u8* data, u32 size)

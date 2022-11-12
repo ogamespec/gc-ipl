@@ -1,5 +1,5 @@
 
-```
+```c++
 main (1)
     BS2Init (1)
         memset (1)
