@@ -1,4 +1,6 @@
-# Open source GAMECUBE IPL
+# Open Source GAMECUBE IPL
+
+:warning: GigaLeak Note. Yes, we know that one of the GigaLeak archives (`bb2.zip`) leaked almost all source code (most missing headers can be found in other archives) that can be built into a working BootROM image. So what of it? :-) The project has nothing to do with GigaLeak. Of course it's tempting to take at least the names of the IPL main code functions from there, but it's not interesting. Most of the information about IPL was already known before the leak.
 
 **!!! For educational purposes only !!!**
 
