@@ -41,7 +41,7 @@ Code entrypoint for start routine is made to 0x81300000 location (virtual addres
 
 Almost 50% of IPL binary payload is occupied by Dolphin SDK library calls.
 
-Important Note: Bootrom is encrypted itself. Decryption is done by MX chip, during block reading of bootrom data. On early stages (BS1) decryption is done on-the-fly as Gekko load 32-Byte bursts in instruction cache. Later its decrypted by EXI DMA, during BS2 copy. Its very important to watch scrambler not to go out-of-sync, otherwise trash appear as output. Symmetric encryption algorithm (XOR-based) was reversed by segher: <a href='../wiki/Descrambler.md'>Descrambler</a>
+Important Note: Bootrom is encrypted itself. Decryption is done by MX chip, during block reading of bootrom data. On early stages (BS1) decryption is done on-the-fly as Gekko load 32-Byte bursts in instruction cache. Later its decrypted by EXI DMA, during BS2 copy. Its very important to watch scrambler not to go out-of-sync, otherwise trash appear as output. Symmetric encryption algorithm (XOR-based) was reversed by segher: [Descrambler](/wiki/Descrambler.md)
 
 Also Bootrom contains two sets of raster fonts. One for ANSI charset and another for SJIS:
 
