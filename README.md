@@ -5,12 +5,12 @@
 **!!! For educational purposes only !!!**
 
 Project Goals:
-- Reverse engineering of retail `GameCube` bootrom (USA / NTSC version was used as reference)
+- Reverse engineering of retail GameCube bootrom (USA / NTSC version was used as reference)
 - Write own bootrom, based on IPL reversing
-- Use bootrom in gamecube emulators to have fun :-)
+- Use bootrom in GameCube emulators to have fun :-)
 
 Toolchain (mostly official):
-- `CodeWarrior` IDE for Nintendo `GameCube`
+- CodeWarrior IDE for Nintendo GameCube
 - Dolphin SDK
 - Dolwin debugger
 
@@ -24,7 +24,7 @@ Overall Progress:
 - IPL menus
 - Utility to merge all pieces in single binary ROM file
 
-Gamecube Bootrom details:
+GameCube Bootrom details:
 
 Bootrom is located in special chip, designed by Macronix Ltd., and placed near Flipper IC:
 
@@ -34,7 +34,7 @@ Same chip shares non-volatile memory (SRAM) and real-time clock (RTC).
 
 Bootrom size is 2 MB.
 
-First logical part of bootrom (reset vector) called Bootstrap 1 (BS1). This small procedure is written on assembly and started from 0xfff00100 physical address. It prepares Gamecube hardware, checks memory, initialize virtual addressing and load second logical part, known as Bootstrap 2 (BS2) or IPL (Intial Program Loader).
+First logical part of bootrom (reset vector) called Bootstrap 1 (BS1). This small procedure is written on assembly and started from 0xfff00100 physical address. It prepares GameCube hardware, checks memory, initialize virtual addressing and load second logical part, known as Bootstrap 2 (BS2) or IPL (Intial Program Loader).
 
 IPL is written on C. It's compiled as DOL executable, by using early version Dolphin SDK as system API.
 Code entrypoint for start routine is made to 0x81300000 location (virtual address), by link script.
@@ -78,5 +78,5 @@ YouTube video:
 <a href='http://www.youtube.com/watch?feature=player_embedded&v=In0beAki4mM' target='_blank'><img src='http://img.youtube.com/vi/In0beAki4mM/0.jpg' width='425' height=344 /></a><br>
 
 Credits:
-- Credits go to Gamecube scene members and my good friends : groepaz and tmbinc :=)
+- Credits go to GameCube scene members and my good friends : groepaz and tmbinc :=)
 - Thanks to Nintendo and ArtX team for such sexy console ^^
