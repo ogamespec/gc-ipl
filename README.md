@@ -1,4 +1,4 @@
-# Open source Gamecube bootrom
+# Open source GAMECUBE IPL
 
 **!!! For educational purposes only !!!**
 
